@@ -19,14 +19,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-s-9g6&&91-=oqti$ck^@b5xddf@cjk!3lszsn)-v=bqpk5gl1c"
+SECRET_KEY = 'django-insecure-s-9g6&&91-=oqti$ck^@b5xddf@cjk!3lszsn)-v=bqpk5gl1c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-DOMAIN_NAME = "http://localhost:8000"
+DOMAIN_NAME = 'http://127.0.0.1:8000'
 
 # Application definition
 
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
+    "django_extensions",
+
 
     "products",
     "users",
@@ -107,7 +109,7 @@ DATABASES = {
         "NAME": "store_db",
         "USER": "postgres",
         "PASSWORD": "AAD1sup@$$",
-        "HOST": "192.168.100.234",
+        "HOST": "192.168.100.134",
         "PORT": "5432",
     }
 }
@@ -173,15 +175,19 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 # Celery
-CELERY_BROKER_URL = 'redis://192.168.100.132:6379'
-CELERY_RESULT_BACKEND = 'redis://192.168.100.132:6379'
+# CELERY_BROKER_URL = 'redis://192.168.100.132:6379'
+# CELERY_RESULT_BACKEND = 'redis://192.168.100.132:6379'
+#
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": "redis://192.168.100.132:6379/1",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#         }
+#     }
+# }
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.100.132:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
+# STRIPE
+STRIPE_PUBLIC_KEY = 'pk_test_51NVeecGAcI2m7FYuejdZo9zpstZKt7XHc7HAQ5QxVyG2qJ7LDk2Ac9hf23LvunhkSWPUKfhiFuLjftsLFor7MSDr00XcoBhw63'
+STRIPE_SECRET_KEY = 'sk_test_51NVeecGAcI2m7FYuAUjlcSAmgGeApXMu8SncZja6rPht3aYXoSH4JuzKxVbTDyDvt158fHirYGWpfpbxobYsOIkx00MT37JkTp'
